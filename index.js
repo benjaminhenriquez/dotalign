@@ -7,77 +7,51 @@
   ducksFinal = [];
 
   addSubmitFormEvent();
-  addButtonEvent();
 
 
 
 //***functions***
 
 
-//event listeners and  extra inputs for form
+//event listener
 
   function addSubmitFormEvent(){
     var form;
 
     form = document.querySelector("form");
-    form.addEventListener("submit", function(event){
 
-       addGrid(event);
-       moveDucks(event);
+    form.addEventListener("submit", function(){
 
-    })
+      input = document.querySelector("textarea").value.split('\n');
+      moveDucks(input);
+
+    });
 
   };
 
-  function addButtonEvent(){
-    var addButton;
-
-    addButton = document.getElementById("add");
-    addButton.addEventListener("click", function(event){
-
-      event.preventDefault();
-      appendInputs();
-
-
-    })
-  }
-
-  function appendInputs(){
-    var array, coordinates, instructions;
-
-    input = document.getElementById("input")
-    array = input.querySelectorAll("div");
-    coordinates = array[1].cloneNode("true");
-    instructions = array[2].cloneNode("true");
-    input.append(coordinates,instructions);
-
-  }
 
   //functions that retrieve information and parse it
 
-  function addGrid(e){
+  function addGrid(input){
 
-    input = e.path[0][0].value;
     input = input.split(" ");
     input[0] = parseInt(input[0], 10);
     input[1] = parseInt(input[1], 10);
 
     grid = input;
-  }
+  };
 
-  function parseCoordinates(e, i){
+  function parseCoordinates(input){
 
-    input = e.path[0][i].value;
     input = input.split(" ");
     input[0] = parseInt(input[0], 10);
     input[1] = parseInt(input[1], 10);
 
     return input;
-  }
+  };
 
-  function splitInstructions(e, i){
+  function splitInstructions(input){
 
-    input = e.path[0][i].value;
     input = input.split("");
 
     return input;
@@ -85,21 +59,20 @@
 
 //iterates over each duck
 
-  function moveDucks(e){
-    var coor, inst, finalCoordinates, formInputs, i;
+  function moveDucks(input){
 
-    formInputs = document.getElementsByTagName("input")
+    addGrid(input[0]);
 
-    for(i = 1; i < formInputs.length; i = i + 1){
-      coor = parseCoordinates(e, i);
+    for(i = 1; i < input.length; i++){
+      coor = parseCoordinates(input[i]);
       i = i + 1;
-      inst = splitInstructions(e, i);
+      inst = splitInstructions(input[i]);
       logic(coor, inst);
     }
 
-    alert(ducksFinal);
+    alert(ducksFinal.join("\n"));
 
-  }
+  };
 
   //logic for moving individual duck
 
@@ -124,29 +97,28 @@
         coor[1] = coors[1] > grid[1] ? grid[1]: coors[1];
       }
 
-    })
+    });
 
-    ducksFinal.push(coor);
+    ducksFinal.push(coor.join(" "));
 
   }
 
   function forward(coor){
 
     if (coor[2] === "N"){
-      coor[1] = coor[1] + 1
+      coor[1] = coor[1] + 1;
     }
     else if (coor[2] === "S"){
-      coor[1] = coor[1] - 1
+      coor[1] = coor[1] - 1;
     }
     else if (coor[2] === "E"){
-      coor[0] = coor[0] + 1
+      coor[0] = coor[0] + 1;
     }
     else if (coor[2] === "W"){
-      coor[0] = coor[0] - 1
+      coor[0] = coor[0] - 1;
     }
-    return coor
+    return coor;
   }
-
 
 
 })();
