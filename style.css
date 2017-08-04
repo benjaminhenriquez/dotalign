@@ -1,0 +1,21 @@
+body {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0,0,0,0.75)), url("http://www.city-data.com/forum/attachments/long-island/94635d1335739390-stony-brook-today-i-duck-pond-sb_duckpond1.jpg");
+  text-align: center;
+  overflow-x: hidden;
+  background-size: cover;
+  box-sizing: border-box;
+  color: white;
+  font-family: Helvetica;
+}
+
+button {
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #a8a8a8;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #858585;
+}
