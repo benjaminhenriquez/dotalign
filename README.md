@@ -13,13 +13,31 @@ I thoroughly enjoyed doing this challenge, and I hope you will enjoy my solution
 
 1.
 
+SELECT UrlText FROM Domain;
+
 2.
+
+SELECT AddressText, Name FROM EmailAddress
+INNER JOIN Person
+ON EmailAddress.PersonId = Person.Id;
 
 3.
 
+SELECT UrlText AS DomainName,
+COUNT(Type) AS EmailsSent
+FROM Domain
+JOIN EmailAddress
+ON Domain.Id = EmailAddress.DomainId
+JOIN Participant
+ON EmailAddress.Id = Participant.EmailAddressId
+LEFT JOIN ParticipantType
+ON Participant.ParticipantTypeid = ParticipantType.id
+AND Type IN('To','CC','BCC')
+GROUP BY UrlText;
+
 ## On Golden Pond (2nd Section)
 
-I used Javascript to solve this problem. The html page allows user to input information into a form.
+I used Javascript ES5 to solve this problem. The html page allows user to input information into a form.
 Once submitted an alert with the answer pops up on screen.
 Code can be viewed in the index.js file.
 
