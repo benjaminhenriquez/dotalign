@@ -1,6 +1,6 @@
 # Project Title
 
-Coding Challenge for Dot Align.
+Coding Challenge for Dot Align. Second challenge is live at duck-pond.surge.sh.
 
 ## Description
 
@@ -47,6 +47,8 @@ There is no need to install anything.
 
 Once the repository is forked to local file
 you can open the index.html file in any browser.
+
+There is also the option to view the project online at duck-pond.surge.sh
 
 Alternatively, the contents of both the index.html and index.js files can be copied.
 They must be placed in the same directory or folder in order for js file to be properly linked.
